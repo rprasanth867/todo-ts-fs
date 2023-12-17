@@ -1,21 +1,22 @@
 import express, { Express, Response, Request, NextFunction } from 'express';
-import cors from 'cors';
 import dotenv from 'dotenv';
-require('./configs/mysqlConfig');
+import cors from 'cors';
 import logger from './configs/logger';
+require('./configs/mysqlConfig');
 import rootRouter from './routes/rootRouter';
 
 dotenv.config();
+
 const app: Express = express();
 
 app.use(cors());
 app.use(express.json());
 
 app.listen(process.env.PORT, () => {
-    logger.info(`Account service is running at ${process.env.PORT} port`);
+    logger.info(`Auth service is running on ${process.env.PORT}`)
 });
 
-app.use('/account/api/v1', rootRouter);
+app.use('/auth/api/v1', rootRouter);
 
 // error handling
 // if any error occures in the code, this middleware will execure

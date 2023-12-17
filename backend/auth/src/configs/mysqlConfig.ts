@@ -22,11 +22,11 @@ function queryPromise(sql: string, values: any[] = []): Promise<any> {
             if (error) {
                 reject(error);
             } else {
-                resolve(result)
+                resolve(result);
             }
         })
-    })
+    });
 };
 
-export default db;
 export { queryPromise };
+export default db;

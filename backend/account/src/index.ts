@@ -1,9 +1,9 @@
 import express, { Express, Response, Request, NextFunction } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-require('./src/configs/mysqlConfig');
-import logger from './src/configs/logger';
-import rootRouter from './src/routes/rootRouter';
+require('./configs/mysqlConfig');
+import logger from './configs/logger';
+import rootRouter from './routes/rootRouter';
 
 dotenv.config();
 const app: Express = express();

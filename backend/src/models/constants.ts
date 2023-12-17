@@ -7,7 +7,9 @@ type Messages = {
     failureGet: string,
     failurePut: string,
     failurePost: string,
-    failureDelete: string
+    failureDelete: string,
+
+    urlNotFound: string
 }
 
 export const MESSAGES: Messages = {
@@ -19,5 +21,7 @@ export const MESSAGES: Messages = {
     failureGet: 'Failed to retrieve data',
     failurePut: 'Failed to update data',
     failurePost: 'Failed to create data',
-    failureDelete: 'Failed to delete data'
+    failureDelete: 'Failed to delete data',
+
+    urlNotFound: 'URL not found on the server'
 };

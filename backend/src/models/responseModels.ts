@@ -1,4 +1,4 @@
-type Method = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+type Method = 'ALL' |'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 export const successResponse = (method: Method, message: string, data?: {[key: string]: any}) => {
     const res: {method: Method, message: string, data?: {[key: string]: string}} = {

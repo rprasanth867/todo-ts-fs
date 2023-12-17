@@ -62,4 +62,8 @@ router.delete('/:todoId', async (req: Request, res: Response) => {
     }
 });
 
+router.all('*', (req: Request, res: Response) => {
+    res.status(404).json({message: MESSAGES.urlNotFound});
+})
+
 module.exports = router;

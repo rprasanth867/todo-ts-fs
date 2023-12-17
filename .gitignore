@@ -1,3 +1,9 @@
 
-# backend node_modules
+# backend account node_modules
 backend/account/node_modules
+
+# account service logs
+backend/account/logs
+
+# backend auth node_modules
+backend/auth/node_modules

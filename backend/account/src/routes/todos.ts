@@ -1,5 +1,5 @@
 import express, { Request, Response, Express, Router } from 'express';
-const { queryPromise } = require('../configs/mysqlConfig');
+import { queryPromise } from '../configs/mysqlConfig';
 import { failureResponse, successResponse } from '../models/responseModels';
 import { MESSAGES } from '../models/constants';
 
@@ -66,4 +66,4 @@ router.all('*', (req: Request, res: Response) => {
     res.status(404).json({message: MESSAGES.urlNotFound});
 })
 
-module.exports = router;
+export default router;

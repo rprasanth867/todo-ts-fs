@@ -16,7 +16,7 @@ db.connect((err: any) => {
     console.log('DB Connection established. Connection ID:', db.threadId);
 });
 
-function queryPromise(sql: string, values: any[] = []) {
+function queryPromise(sql: string, values: any[] = []): Promise<any> {
     return new Promise((resolve, reject) => {
         db.query(sql, values, (error: any, result: any) => {
             if (error) {
@@ -28,5 +28,5 @@ function queryPromise(sql: string, values: any[] = []) {
     })
 };
 
-module.exports = db;
-module.exports.queryPromise = queryPromise;
+export default db;
+export { queryPromise };

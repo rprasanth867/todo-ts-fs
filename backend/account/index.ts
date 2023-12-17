@@ -1,4 +1,5 @@
 import express, { Express, Response, Request, NextFunction } from 'express';
+import logger from './src/configs/logger';
 const cors = require('cors');
 const dotenv = require('dotenv');
 require('./src/configs/mysqlConfig');
@@ -10,10 +11,10 @@ app.use(cors());
 app.use(express.json());
 
 app.listen(process.env.PORT, () => {
-    console.log('Express app is running at 5000 port');
+    logger.info('Express app is running at 5000 port');
 });
 
-const todos = require('./src/routes/todos');
+import todos from './src/routes/todos';
 
 app.use('/todos', todos);
 

@@ -12,10 +12,10 @@ app.use(cors());
 app.use(express.json());
 
 app.listen(process.env.PORT, () => {
-    logger.info('Express app is running at 5000 port');
+    logger.info(`Express app is running at ${process.env.PORT} port`);
 });
 
-app.use('/account/v1/api', rootRouter);
+app.use('/account/api/v1', rootRouter);
 
 // error handling
 // if any error occures in the code, this middleware will execure

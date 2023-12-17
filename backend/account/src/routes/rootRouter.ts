@@ -1,8 +1,8 @@
 import express, { Router } from 'express';
-import todos from './todosRouter';
+import userRouter from './users';
 
 const rootRouter: Router = express.Router();
 
-rootRouter.use('/todos', todos);
+rootRouter.use('/users', userRouter);
 
 export default rootRouter;

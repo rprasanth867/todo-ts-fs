@@ -7,7 +7,7 @@ const logger: Logger = createLogger({
       label({label: 'account-service'}),
       timestamp(),
       printf(({label, level, message, timestamp }) => {
-        return `${label} ${timestamp} ${level}: ${message}`;
+        return `[${label}] ${timestamp} ${level}: ${message}`;
       })
     ),
     defaultMeta: { service: 'account-service' },

@@ -1,10 +1,10 @@
-const mysql = require('mysql');
+import mysql, { Connection } from 'mysql';
 
-const db = mysql.createConnection({
+const db: Connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'todos'
+    database: 'account'
 });
 
 db.connect((err: any) => {

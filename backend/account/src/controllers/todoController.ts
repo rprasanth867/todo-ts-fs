@@ -6,7 +6,7 @@ import { failureResponse, successResponse } from "../models/responseModels";
 
 export const getAllTodos = async (req: Request, res: Response): Promise<void> => {
     try {
-        const query = 'SELECT * FROM todo_list;';
+        const query = 'SELECT * FROM todos;';
         const queryRes = await queryPromise(query);
         const formatedQueryRes = queryRes.map((todo: any) => ({...todo, is_completed: Boolean(todo.is_completed)}));
         const payload = successResponse('GET', MESSAGES.successGet, formatedQueryRes);
@@ -21,7 +21,7 @@ export const getAllTodos = async (req: Request, res: Response): Promise<void> =>
 export const createTodo = async (req: Request, res: Response) => {
     try {
         const { name, is_completed } = req.body;
-        const query = 'INSERT INTO todo_list (name, is_completed) values (?, ?);';
+        const query = 'INSERT INTO todos (name, is_completed) values (?, ?);';
         const queryRes = await queryPromise(query, [name, is_completed]);
         const payload = successResponse('POST', MESSAGES.successPost, queryRes);
         res.status(204).json(payload);
@@ -36,7 +36,7 @@ export const updateTodo = async (req: Request, res:  Response) => {
     try {
         const { name, is_completed } = req.body;
         const { todoId } = req.params;
-        const query = `UPDATE todo_list SET name = ?, is_completed = ? WHERE todo_id = ?;`;
+        const query = `UPDATE todos SET name = ?, is_completed = ? WHERE todo_id = ?;`;
         const queryRes = await queryPromise(query, [name, is_completed, todoId]);
         const payload = successResponse('PUT', MESSAGES.successPut, queryRes);
         res.status(204).json(payload);
@@ -50,7 +50,7 @@ export const updateTodo = async (req: Request, res:  Response) => {
 export const deleteTodo = async (req: Request, res: Response) => {
     try {
         const { todoId } = req.params;
-        const query = 'DELETE FROM todo_list WHERE todo_id = ?';
+        const query = 'DELETE FROM todos WHERE todo_id = ?';
         const queryRes = await queryPromise(query, [todoId]);
         const payload = successResponse('POST', MESSAGES.successPost, queryRes);
         res.status(204).json(payload);

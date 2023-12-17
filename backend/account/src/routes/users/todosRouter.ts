@@ -1,6 +1,6 @@
 import express, { Request, Response, Express, Router } from 'express';
-import { MESSAGES } from '../models/constants';
-import { createTodo, deleteTodo, getAllTodos, updateTodo } from '../controllers/todoController';
+import { MESSAGES } from '../../models/constants';
+import { createTodo, deleteTodo, getAllTodos, updateTodo } from '../../controllers/todoController';
 
 const router: Router = express.Router();
 

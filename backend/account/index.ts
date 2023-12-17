@@ -1,8 +1,9 @@
 import express, { Express, Response, Request, NextFunction } from 'express';
-import logger from './src/configs/logger';
-const cors = require('cors');
-const dotenv = require('dotenv');
+import cors from 'cors';
+import dotenv from 'dotenv';
 require('./src/configs/mysqlConfig');
+import logger from './src/configs/logger';
+import rootRouter from './src/routes/rootRouter';
 
 dotenv.config();
 const app: Express = express();
@@ -14,9 +15,7 @@ app.listen(process.env.PORT, () => {
     logger.info('Express app is running at 5000 port');
 });
 
-import todos from './src/routes/todos';
-
-app.use('/todos', todos);
+app.use('/account/v1/api', rootRouter);
 
 // error handling
 // if any error occures in the code, this middleware will execure

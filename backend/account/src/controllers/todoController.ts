@@ -1,11 +1,10 @@
-import express, { Request, Response, Express, Router } from 'express';
-import { queryPromise } from '../configs/mysqlConfig';
-import { failureResponse, successResponse } from '../models/responseModels';
-import { MESSAGES } from '../models/constants';
+import { Request, Response } from "express";
+import { queryPromise } from "../configs/mysqlConfig";
+import { MESSAGES } from "../models/constants";
+import { failureResponse, successResponse } from "../models/responseModels";
 
-const router: Router = express.Router();
 
-router.get('/all', async (req: Request, res: Response): Promise<void> => {
+export const getAllTodos = async (req: Request, res: Response): Promise<void> => {
     try {
         const query = 'SELECT * FROM todo_list;';
         const queryRes = await queryPromise(query);
@@ -17,9 +16,9 @@ router.get('/all', async (req: Request, res: Response): Promise<void> => {
         const payload = failureResponse('GET', MESSAGES.failureGet, err);
         res.status(500).json(payload);
     }
-});
+};
 
-router.post('/add', async (req: Request, res: Response) => {
+export const createTodo = async (req: Request, res: Response) => {
     try {
         const { name, is_completed } = req.body;
         const query = 'INSERT INTO todo_list (name, is_completed) values (?, ?);';
@@ -31,9 +30,9 @@ router.post('/add', async (req: Request, res: Response) => {
         const payload = failureResponse('POST', MESSAGES.failurePost, err)
         res.status(500).json(payload);
     }
-});
+};
 
-router.put('/:todoId', async (req: Request, res:  Response) => {
+export const updateTodo = async (req: Request, res:  Response) => {
     try {
         const { name, is_completed } = req.body;
         const { todoId } = req.params;
@@ -46,9 +45,9 @@ router.put('/:todoId', async (req: Request, res:  Response) => {
         const payload = failureResponse('PUT', MESSAGES.failurePut, err);
         res.status(500).json(payload);
     }
-});
+};
 
-router.delete('/:todoId', async (req: Request, res: Response) => {
+export const deleteTodo = async (req: Request, res: Response) => {
     try {
         const { todoId } = req.params;
         const query = 'DELETE FROM todo_list WHERE todo_id = ?';
@@ -60,10 +59,4 @@ router.delete('/:todoId', async (req: Request, res: Response) => {
         const payload = failureResponse('POST', MESSAGES.failurePost, err)
         res.status(500).json(payload);
     }
-});
-
-router.all('*', (req: Request, res: Response) => {
-    res.status(404).json({message: MESSAGES.urlNotFound});
-})
-
-export default router;
+};

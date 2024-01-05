@@ -41,3 +41,11 @@ Created account database
 | name    | varchar(50)           | NO   |     | NULL    |                |
 | email   | varchar(50)           | NO   |     | NULL    |                |
 | gender  | enum('male','female') | NO   |     | male    |                |
+
+`refresh_tokens table schema`
+| Field            | Type         | Null | Key | Default | Extra          |
+|------------------|--------------|------|-----|---------|----------------|
+| refresh_token_id | int          | NO   | PRI | NULL    | auto_increment |
+| jwt_token        | varchar(200) | NO   |     | NULL    |                |
+| user_id          | int          | NO   | MUL | NULL    |                |
+

@@ -1,9 +1,8 @@
-import express, { Request, Response, Router } from 'express';
+import express, { Router } from 'express';
+import { authenticateUserLogin } from '../controllers/loginController';
 
 const router: Router = express.Router();
 
-router.post('/', (req: Request, res: Response) => {
-    res.sendStatus(204);
-});
+router.post('/', authenticateUserLogin);
 
 export default router;

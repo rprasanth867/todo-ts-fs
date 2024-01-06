@@ -1,4 +1,4 @@
-import mysql, { Connection, MysqlError } from 'mysql';
+import mysql, { Connection, MysqlError, queryCallback } from 'mysql';
 
 const db: Connection = mysql.createConnection({
     host: 'localhost',
@@ -18,7 +18,7 @@ db.connect((err: MysqlError) => {
 
 function queryPromise(sql: string, values: any[] = []): Promise<any> {
     return new Promise((resolve, reject) => {
-        db.query(sql, values, (error: any, result: any) => {
+        db.query(sql, values, (error: MysqlError | null, result: any) => {
             if (error) {
                 reject(error);
             } else {

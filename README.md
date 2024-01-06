@@ -46,6 +46,6 @@ Created account database
 | Field            | Type         | Null | Key | Default | Extra          |
 |------------------|--------------|------|-----|---------|----------------|
 | refresh_token_id | int          | NO   | PRI | NULL    | auto_increment |
-| jwt_token        | varchar(200) | NO   |     | NULL    |                |
+| jwt_token        | varchar(512) | NO   | UNI | NULL    |                |
 | user_id          | int          | NO   | MUL | NULL    |                |
 

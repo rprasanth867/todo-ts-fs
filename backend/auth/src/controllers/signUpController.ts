@@ -14,7 +14,7 @@ export const createUser = async (req: Request, res: Response) => {
 
     try {
         const query: string = 'INSERT INTO users (name, email, password, gender) values (?, ?, ?, ?)';
-        const queryRes = await queryPromise(query, [name, email, password, gender]);
+        await queryPromise(query, [name, email, password, gender]);
         res.sendStatus(204);
     } catch (err) {
         console.log('### ERROR OCCURRED ###', err);

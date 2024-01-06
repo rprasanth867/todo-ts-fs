@@ -9,7 +9,9 @@ type Messages = {
     failurePost: string,
     failureDelete: string,
 
-    urlNotFound: string
+    urlNotFound: string,
+    serverError: string,
+    unauthorized: string
 }
 
 export const MESSAGES: Messages = {
@@ -23,5 +25,7 @@ export const MESSAGES: Messages = {
     failurePost: 'Failed to create data',
     failureDelete: 'Failed to delete data',
 
-    urlNotFound: 'URL not found on the server'
+    urlNotFound: 'URL not found on the server',
+    serverError: 'Internal Server Error',
+    unauthorized: 'Unathorized access !!'
 };

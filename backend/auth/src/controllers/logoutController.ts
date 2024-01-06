@@ -9,7 +9,8 @@ export const logoutUser = async (req: EnhancedRequest, res: Response) => {
     const method: Method = req.method as Method;
 
     if (!refresh_token) {
-        res.status(400).json(failureResponse(method, 'refresh_token should not be empty'))
+        res.status(400).json(failureResponse(method, 'refresh_token should not be empty'));
+        return;
     }
 
     try {
@@ -20,7 +21,7 @@ export const logoutUser = async (req: EnhancedRequest, res: Response) => {
             await queryPromise(deleteTokensQuery, [user[0].user_id]);
             res.sendStatus(204);
         } else {
-            res.send(404).json(failureResponse(method, 'Refresh Token not found'));
+            res.status(404).json(failureResponse(method, 'Refresh Token not found'));
         }
     } catch (err) {
         console.log('### ERROR OCCURRED ###', err);

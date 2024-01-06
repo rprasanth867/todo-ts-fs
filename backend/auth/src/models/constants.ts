@@ -11,7 +11,9 @@ type Messages = {
 
     urlNotFound: string,
     serverError: string,
-    unauthorized: string
+    unauthorized: string,
+    invalidToken: string,
+    tokenUpdated: string
 }
 
 export const MESSAGES: Messages = {
@@ -27,5 +29,7 @@ export const MESSAGES: Messages = {
 
     urlNotFound: 'URL not found on the server',
     serverError: 'Internal Server Error',
-    unauthorized: 'Unathorized access !!'
+    unauthorized: 'Unathorized access !!',
+    invalidToken: 'Invalid Token',
+    tokenUpdated: 'Token updated successfully'
 };
